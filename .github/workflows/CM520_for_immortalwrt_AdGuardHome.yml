@@ -150,7 +150,6 @@ jobs:
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@main
-      if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
         name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
@@ -207,17 +206,17 @@ jobs:
 #      env:
 #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Upload OpenWrt Firmware to Release
-      uses: ncipollo/release-action@v1
-      with:
-        name: CM520_for_immortalwrt_AdGuardHome ${{ env.PRODUCT_NAME }}${{ env.DATE }}
-        tag: CM520_for_immortalwrt_AdGuardHome${{ env.FILE_NAME }}
-        artifacts: ${{ env.FIRMWARE }}/*
-        allowUpdates: true
-        removeArtifacts: true
-        token: ${{ secrets.GITHUB_TOKEN }}
-        body: |
-          * 星际宝盒CM520-79F_Home&immortalwrt固件
-          * AdGuardHome-Home
-          * openwrt-23.05
-          * Default username: root
+    # - name: Upload OpenWrt Firmware to Release
+    #   uses: ncipollo/release-action@v1
+    #   with:
+    #     name: CM520_for_immortalwrt_AdGuardHome ${{ env.PRODUCT_NAME }}${{ env.DATE }}
+    #     tag: CM520_for_immortalwrt_AdGuardHome${{ env.FILE_NAME }}
+    #     artifacts: ${{ env.FIRMWARE }}/*
+    #     allowUpdates: true
+    #     removeArtifacts: true
+    #     token: ${{ secrets.GITHUB_TOKEN }}
+    #     body: |
+    #       * 星际宝盒CM520-79F_Home&immortalwrt固件
+    #       * AdGuardHome-Home
+    #       * openwrt-23.05
+    #       * Default username: root
